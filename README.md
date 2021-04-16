@@ -3,7 +3,8 @@
 ### Step 0
 rename .env.example to .env
 
-### Step 1: run compose install
+### Step 1
+run compose install
 ```
 cd /your directory with app in
 composer install
