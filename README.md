@@ -1,5 +1,8 @@
 ## Checklist App
 
+### Step 0
+rename .env.example to .env
+
 ### Step 1: run compose install
 ```
 cd /your directory with app in
@@ -19,8 +22,15 @@ php artisan migrate
 ```
 
 ### Step 4
+Generate app keys
+```
+php artisan key:generate
+```
+
+### Step 5
 Host it so you can access the site
 ```
 php artisan serve
 ```
 Now go to the url it displays
+
