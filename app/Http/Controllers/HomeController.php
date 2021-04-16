@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChecklistExecution;
+use App\Models\ChecklistTemplate;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        $templates = ChecklistTemplate::all()->count();
         $ran_checklists = ChecklistExecution::latest()->take(10)->get();
-        return view('home', ['ran_checklists'=>$ran_checklists]);
+        return view('home', ['ran_checklists'=>$ran_checklists, 'number_of_templates'=>$templates]);
     }
 }
