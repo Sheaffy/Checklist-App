@@ -13,9 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
-
                     <h2>Manage Checklist Templates</h2>
                     <a href="/manage-checklists" class="btn btn-primary">Manage Checklists</a>
                     

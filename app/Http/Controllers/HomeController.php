@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $ran_checklists = ChecklistExecution::all();
+        $ran_checklists = ChecklistExecution::latest()->take(10)->get();
         return view('home', ['ran_checklists'=>$ran_checklists]);
     }
 }
