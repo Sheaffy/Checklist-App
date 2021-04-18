@@ -25,8 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $templates = ChecklistTemplate::all()->count();
+        $templates_count = ChecklistTemplate::all()->count();
+        $templates = ChecklistTemplate::all();
+
         $ran_checklists = ChecklistExecution::latest()->take(10)->get();
-        return view('home', ['ran_checklists'=>$ran_checklists, 'number_of_templates'=>$templates]);
+        return view('home', ['ran_checklists'=>$ran_checklists, 'number_of_templates'=>$templates_count, 'templates' => $templates]);
     }
 }

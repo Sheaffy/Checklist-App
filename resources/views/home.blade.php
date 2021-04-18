@@ -13,10 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h2>Manage Checklist Templates</h2>
-                    <a href="/manage-checklists" class="btn btn-primary">Manage Checklists</a>
                     
-                        <div>You have <span class="badge badge-success">{{ $number_of_templates}}</span> Templates</div>
                     
                     <div class="card p-3 mt-3">
                     <h2>Recently Run Checklists</h2>
@@ -29,7 +26,7 @@
                            
                             <h2 class="mb-0">
                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#{{ 'collapse'.$execution->id }}"  aria-controls="{{ 'collapse'.$execution->id }}">
-                                {{$execution->name}}    <span class="badge badge-primary float-right" style="margin-top:3px;">{{$execution->ChecklistTemplate->name}}</span>
+                                <span style="width:300px;white-space: nowrap; text-overflow: ellipsis;overflow:hidden;display:block">{{$execution->name}}</span>   <span class="badge badge-primary float-right" style="margin-top:-17px;">{{$execution->ChecklistTemplate->name}}</span>
                                 </button>
                             </h2>
                             </div>
@@ -41,7 +38,7 @@
                                             {{$step->ChecklistTemplateStep->description}} - {{ $step->checked == true ? 'YES' : 'NO' }}<br>
                                         @endforeach
 
-                                        <a href="/delete-execution/{{$execution->id}}" class="btn btn-danger float-right m-4">Delete</a>
+                                        <a href="/delete-execution/{{$execution->id}}" class="btn btn-outline-danger float-right m-4">Delete</a>
                             </div>
                             </div>
                         </div>
@@ -54,6 +51,23 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-4">
+                    <h2>Manage Checklist Templates</h2>
+                    <div>You have <span class="badge badge-success">{{ $number_of_templates}}</span> Templates</div>
+                    <a href="/manage-checklists" class="btn btn-primary mt-3">Manage Checklists</a>
+
+                    <div class="mt-4 card p-3">
+                        Run a checklist
+                        
+                        <select class="form-control" id="run-checklist-select">
+                            @foreach($templates as $template)
+                                <option value="{{$template->id}}">{{$template->name}}</option>
+                            @endforeach
+                        </select>
+
+                        <button id="run-checklist-btn" class="btn btn-outline-success mt-2">Run</button>
+                    </div>
         </div>
     </div>
 </div>
